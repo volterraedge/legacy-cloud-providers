@@ -498,6 +498,7 @@ func (ss *scaleSet) GetIPByNodeName(nodeName string) (string, string, error) {
 	publicIP := ""
 	if ipConfig.PublicIPAddress != nil && ipConfig.PublicIPAddress.ID != nil {
 		pipID := *ipConfig.PublicIPAddress.ID
+		klog.Info("pip ID is : %s", pipID)
 		matches := vmssPIPConfigurationRE.FindStringSubmatch(pipID)
 		if len(matches) == 7 {
 			// /subscriptions/e9cbbd48-704d-4dfa-bf62-60edda755a66/resourceGroups/mwlab-azure-1b-rg/providers/Microsoft.Compute/virtualMachineScaleSets/xx/virtualMachines/xx/networkInterfaces/xx/ipConfigurations/xx/publicIPAddresses/master-0-public
